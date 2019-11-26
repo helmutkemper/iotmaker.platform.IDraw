@@ -14,4 +14,6 @@ type IDraw interface {
 	ShadowColor(value color.RGBA)
 	ShadowOffsetX(value int)
 	ShadowOffsetY(value int)
+	CreateLinearGradient(x0, y0, x1, y1 int) interface{}
+	CreateRadialGradient(x0, y0, r0, x1, y1, r1 int)
 }
