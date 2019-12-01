@@ -15,8 +15,8 @@ type IDraw interface {
 	ShadowOffsetX(value int)
 	ShadowOffsetY(value int)
 	AddColorStop(gradient interface{}, stop float64, color color.RGBA)
-	CreateLinearGradient(x0, y0, x1, y1 int) interface{}
-	CreateRadialGradient(x0, y0, r0, x1, y1, r1 int)
+	CreateLinearGradient(x0, y0, x1, y1 interface{}) interface{}
+	CreateRadialGradient(x0, y0, r0, x1, y1, r1 interface{}) interface{}
 	FillStyle(value interface{})
 	StrokeStyle(value interface{})
 }
