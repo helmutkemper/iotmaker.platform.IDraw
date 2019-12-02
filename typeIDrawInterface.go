@@ -20,4 +20,6 @@ type IDraw interface {
 	FillStyle(value interface{})
 	StrokeStyle(value interface{})
 	GetImageData(x, y, width, height int) [][]color.RGBA
+	ClearRect(x, y, width, height int)
+	FillRect(x, y, width, height int)
 }
