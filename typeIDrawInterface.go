@@ -19,7 +19,7 @@ type IDraw interface {
 	CreateRadialGradient(x0, y0, r0, x1, y1, r1 interface{}) interface{}
 	FillStyle(value interface{})
 	StrokeStyle(value interface{})
-	GetImageData(x, y, width, height int) [][]color.RGBA
+	GetImageData(x, y, width, height int) map[int]map[int]color.RGBA
 	ClearRect(x, y, width, height int)
 	FillRect(x, y, width, height int)
 }
