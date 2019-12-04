@@ -193,7 +193,7 @@ type IDraw interface {
 	StrokeStyle(value interface{})
 	GetImageData(x, y, width, height int) map[int]map[int]color.RGBA
 	GetImageDataAlphaChannelOnly(x, y, width, height int) map[int]map[int]uint8
-	GetImageDataHitByAlphaChannelValue(x, y, width, height int, minimumAcceptableValue uint8) map[int]map[int]bool
+	GetImageDataCollisionByAlphaChannelValue(x, y, width, height int, minimumAcceptableValue uint8) map[int]map[int]bool
 	ClearRect(x, y, width, height int)
 	FillRect(x, y, width, height int)
 }
