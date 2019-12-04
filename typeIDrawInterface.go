@@ -81,10 +81,92 @@ type IDraw interface {
 	// pt_br: O método stroke() desenha o caminho definido com os métodos moveTo() e lineTo() usando a cor padrão, preta.
 	//     Dica: Use a propriedade strokeStyle para desenhar com outra cor ou usar um gradiente
 	Stroke()
-	LineWidth(value int)
-	ShadowBlur(value int)
-	ShadowColor(value color.RGBA)
+
+	// en: Sets the current line width in pixels
+	//     Default value: 1
+	//     JavaScript syntax: context.lineWidth = number;
+	//
+	// pt_br: Define a espessura da linha em pixels
+	//     Valor padrão: 1
+	//     Sintaxe JavaScript: context.lineWidth = número
+	//
+	//     Example:
+	//     var c = document.getElementById("myCanvas");
+	//     var ctx = c.getContext("2d");
+	//     ctx.lineWidth = 10;
+	//     ctx.strokeRect(20, 20, 80, 100);
+	SetLineWidth(value int)
+
+	// en: Return the current line width in pixels
+	//     Default value: 1
+	//     JavaScript syntax: var l = context.lineWidth;
+	//
+	// pt_br: Retorna a espessura da linha em pixels
+	//     Valor padrão: 1
+	//     Sintaxe JavaScript: var l = context.lineWidth;
+	//
+	//     Example:
+	//     var c = document.getElementById("myCanvas");
+	//     var ctx = c.getContext("2d");
+	//     ctx.lineWidth = 10;
+	//     ctx.strokeRect(20, 20, 80, 100);
+	//     var l = ctx.lineWidth;
+	GetLineWidth() int
+
+	// en: Sets the blur level for shadows
+	//     Default value: 0
+	//
+	// pt_br: Define o valor de borrão da sombra
+	//     Valor padrão: 0
+	SetShadowBlur(value int)
+
+	// en: Return the blur level for shadows
+	//     Default value: 0
+	//
+	// pt_br: Retorna o valor de borrão da sombra
+	//     Valor padrão: 0
+	GetShadowBlur() int
+
+	// en: Sets the color to use for shadows
+	//     Note: Use the shadowColor property together with the shadowBlur property to create a shadow.
+	//     Tip: Adjust the shadow by using the shadowOffsetX and shadowOffsetY properties.
+	//     Default value: #000000
+	//
+	// pt_br: Define a cor da sombra
+	//     Nota: Use a propriedade shadowColor em conjunto com a propriedade shadowBlur para criar a sombra
+	//     Dica: Ajuste o local da sombra usando as propriedades shadowOffsetX e shadowOffsetY
+	//     Valor padrão: #000000
+	SetShadowColor(value color.RGBA)
+
+	// en: Sets the horizontal distance of the shadow from the shape
+	//     shadowOffsetX = 0 indicates that the shadow is right behind the shape.
+	//     shadowOffsetX = 20 indicates that the shadow starts 20 pixels to the right (from the shape's left position).
+	//     shadowOffsetX = -20 indicates that the shadow starts 20 pixels to the left (from the shape's left position).
+	//     Tip: To adjust the vertical distance of the shadow from the shape, use the shadowOffsetY property.
+	//     Default value: 0
+	//
+	// pt_br: Define a distância horizontal entre a forma e a sua sombra
+	//     shadowOffsetX = 0 indica que a forma e sua sombra estão alinhadas uma em cima da outra.
+	//     shadowOffsetX = 20 indica que a forma e a sua sombra estão 20 pixels afastadas a direita (em relação a parte mais a esquerda da forma)
+	//     shadowOffsetX = -20 indica que a forma e a sua sombra estão 20 pixels afastadas a esquerda (em relação a parte mais a esquerda da forma)
+	//     Dica: Para ajustar a distância vertical, use a propriedade shadowOffsetY
+	//     Valor padrão: 0
 	ShadowOffsetX(value int)
+
+	// en: Sets or returns the vertical distance of the shadow from the shape
+	//     The shadowOffsetY property sets or returns the vertical distance of the shadow from the shape.
+	//     shadowOffsety = 0 indicates that the shadow is right behind the shape.
+	//     shadowOffsetY = 20 indicates that the shadow starts 20 pixels below the shape's top position.
+	//     shadowOffsetY = -20 indicates that the shadow starts 20 pixels above the shape's top position.
+	//     Tip: To adjust the horizontal distance of the shadow from the shape, use the shadowOffsetX property.
+	//     Default value: 0
+	//
+	// pt_br: Define a distância vertical entre a forma e a sua sombra
+	//     shadowOffsetY = 0 indica que a forma e sua sombra estão alinhadas uma em cima da outra.
+	//     shadowOffsetY = 20 indica que a forma e a sua sombra estão 20 pixels afastadas para baixo (em relação a parte mais elevada da forma)
+	//     shadowOffsetY = -20 indica que a forma e a sua sombra estão 20 pixels afastadas para cima (em relação a parte mais elevada da forma)
+	//     Dica: Para ajustar a distância horizontal, use a propriedade shadowOffsetX
+	//     Valor padrão: 0
 	ShadowOffsetY(value int)
 	AddColorStop(gradient interface{}, stop float64, color color.RGBA)
 	CreateLinearGradient(x0, y0, x1, y1 interface{}) interface{}
