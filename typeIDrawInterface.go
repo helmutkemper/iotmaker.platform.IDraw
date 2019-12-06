@@ -204,7 +204,7 @@ type IDraw interface {
 	//     x1: The x-coordinate of the end point of the gradient
 	//     y1: The y-coordinate of the end point of the gradient
 	//
-	//     The createLinearGradient() method creates a linear gradient object for be used with methods AddColorStopPosition(), FillStyle() and StrokeStyle().
+	//     The createLinearGradient() method creates a linear gradient object for be used with methods AddColorStopPosition(), SetFillStyle() and SetStrokeStyle().
 	//     The gradient can be used to fill rectangles, circles, lines, text, etc.
 	//     Tip: Use this object as the value to the strokeStyle() or fillStyle() methods
 	//     Tip: Use the addColorStopPosition() method to specify different colors, and where to position the colors in the gradient object.
@@ -215,7 +215,7 @@ type IDraw interface {
 	//     x1: Coordenada x do ponto final do gradiente
 	//     y1: Coordenada y do ponto final do gradiente
 	//
-	//     O método CreateLinearGradient() cria um objeto de gradiente linear para ser usado em conjunto com os métodos AddColorStopPosition(), FillStyle() e StrokeStyle().
+	//     O método CreateLinearGradient() cria um objeto de gradiente linear para ser usado em conjunto com os métodos AddColorStopPosition(), SetFillStyle() e SetStrokeStyle().
 	//     O gradiente pode ser usado para preencher retângulos, circulos, linhas, textos, etc.
 	//     Dica: Use este objeto como valor passados aos métodos strokeStyle() ou fillStyle()
 	//     Dica: Use o método addColorStopPosition() para especificar diferentes cores para o gradiente e a posição de cada cor
@@ -237,8 +237,25 @@ type IDraw interface {
 	//     y1: Coordenada y do circulo final do gradiente
 	//     r1: Raio do círculo final. Deve ser um valor positivo e finito. (nota: o raio é um comprimento e não um ângulo)
 	CreateRadialGradient(x0, y0, r0, x1, y1, r1 interface{}) interface{}
-	FillStyle(value interface{})
-	StrokeStyle(value interface{})
+
+	// en: Sets the color, gradient, or pattern used to fill the drawing
+	//     value: a valid JavaScript value or a color.RGBA{} struct
+	//     Default value:	#000000
+	//
+	// pt_br: Define a cor, gradiente ou padrão usado para preencher o desenho
+	//     value: um valor JavaScript valido ou um struct color.RGBA{}
+	//     Valor padrão: #000000
+	SetFillStyle(value interface{})
+
+	// en: Sets the color, gradient, or pattern used for strokes
+	//     value: a valid JavaScript value or a color.RGBA{} struct
+	//     Default value: #000000
+	//
+	// pt_br: Define a cor, gradiente ou padrão usado para o contorno
+	//     value: um valor JavaScript valido ou um struct color.RGBA{}
+	//     Valor padrão: #000000
+	SetStrokeStyle(value interface{})
+
 	GetImageData(x, y, width, height int) map[int]map[int]color.RGBA
 	GetImageDataAlphaChannelOnly(x, y, width, height int) map[int]map[int]uint8
 	GetImageDataCollisionByAlphaChannelValue(x, y, width, height int, minimumAcceptableValue uint8) map[int]map[int]bool
