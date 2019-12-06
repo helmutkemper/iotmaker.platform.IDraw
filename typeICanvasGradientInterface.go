@@ -5,13 +5,16 @@ import "image/color"
 type ICanvasGradient interface {
 
 	// en: Specifies the colors and stop positions in a gradient object
-	//     gradient:     A gradient object created by CreateLinearGradient() or CreateRadialGradient() methods
-	//     stopPosition: A value between 0.0 and 1.0 that represents the position between start (0%) and end (100%) in a gradient
+	//     gradient:     A gradient object created by CreateLinearGradient() or
+	//                   CreateRadialGradient() methods
+	//     stopPosition: A value between 0.0 and 1.0 that represents the position
+	//                   between start (0%) and end (100%) in a gradient
 	//     color:        A color RGBA value to display at the stop position
 	//
-	//     Note: You can call the addColorStopPosition() method multiple times to change a gradient. If you omit this method for
-	//     gradient objects, the gradient will not be visible. You need to create at least one color stop to have a visible
-	//     gradient.
+	//     Note: You can call the addColorStopPosition() method multiple times to change
+	//           a gradient. If you omit this method for gradient objects, the gradient
+	//           will not be visible. You need to create at least one color stop to have
+	//           a visible gradient.
 	//
 	// pt_br: Especifica a cor e a posição final para a cor dentro do gradiente
 	//     gradient:     Objeto de gradiente criado pelos métodos CreateLinearGradient() ou CreateRadialGradient()
