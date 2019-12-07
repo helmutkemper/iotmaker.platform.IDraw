@@ -204,9 +204,10 @@ type IDraw interface {
 	//     between start (0%) and end (100%) in a gradient
 	//     color: A color RGBA value to display at the stop position
 	//
-	//     Note: You can call the addColorStopPosition() method multiple times to change a gradient. If you omit this method for
-	//     gradient objects, the gradient will not be visible. You need to create at least one color stop to have a visible
-	//     gradient.
+	//     Note: You can call the addColorStopPosition() method multiple times to
+	//     change a gradient. If you omit this method for gradient objects, the
+	//     gradient will not be visible. You need to create at least one color stop to
+	//     have a visible gradient.
 	//
 	// pt_br: Especifica a cor e a posição final para a cor dentro do gradiente
 	//     gradient: Objeto de gradiente criado pelos métodos CreateLinearGradient() ou
@@ -333,11 +334,12 @@ type IDraw interface {
 	//     R - The color red (from 0-255)
 	//     G - The color green (from 0-255)
 	//     B - The color blue (from 0-255)
-	//     A - The alpha channel (from 0-255; 0 is transparent and 255 is fully visible)
+	//     A - The alpha channel (from 0-255; 0 is transparent and 255 is fully
+	//     visible)
 	//
-	//     Tip: After you have manipulated the color/alpha information in the map[x][y],
-	//     you can copy the image data back onto the canvas with the putImageData()
-	//     method.
+	//     Tip: After you have manipulated the color/alpha information in the
+	//     map[x][y], you can copy the image data back onto the canvas with the
+	//     putImageData() method.
 	//
 	// pr_br: Retorna um mapa map[x][y]color.RGBA com parte dos dados da imagem contida
 	// no retângulo especificado.
@@ -348,8 +350,8 @@ type IDraw interface {
 	//     width: comprimento do retângulo a ser copiado
 	//     height: altura do retângulo a ser copiado
 	//     return: map[x(int)][y(int)]color.RGBA
-	//             Nota: x e y do retorno não são relativos a coordenada (0,0) da imagem,
-	//             são relativos a coordenada (0,0) do canvas
+	//             Nota: x e y do retorno não são relativos a coordenada (0,0) da
+	//             imagem, são relativos a coordenada (0,0) do canvas
 	//
 	//     Nota: Os dados da imagem não são uma figura, eles representam uma parte
 	//     retangular do canvas e guardam informações de cada pixel contido nessa área
@@ -359,7 +361,8 @@ type IDraw interface {
 	//     R - Cor vermelha (de 0-255)
 	//     G - Cor verde (de 0-255)
 	//     B - Cor azul (de 0-255)
-	//     A - Canal alpha (de 0-255; onde, 0 é transparente e 255 é totalmente visível)
+	//     A - Canal alpha (de 0-255; onde, 0 é transparente e 255 é totalmente
+	//     visível)
 	//
 	//     Dica: Depois de manipular as informações de cor/alpha contidas no map[x][y],
 	//     elas podem ser colocadas de volta no canvas com o método putImageData().
