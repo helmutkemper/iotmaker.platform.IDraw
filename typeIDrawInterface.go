@@ -367,9 +367,130 @@ type IDraw interface {
 	//     Dica: Depois de manipular as informações de cor/alpha contidas no map[x][y],
 	//     elas podem ser colocadas de volta no canvas com o método putImageData().
 	GetImageData(x, y, width, height int) map[int]map[int]color.RGBA
+
+	// en: Returns an ImageData map[x][y]uint8 that copies the pixel alpha channel for
+	// the specified rectangle on a canvas
+	//     x: The x coordinate (in pixels) of the upper-left corner to start copy from
+	//     y: The y coordinate (in pixels) of the upper-left corner to start copy from
+	//     width: The width of the rectangular area you will copy
+	//     height: The height of the rectangular area you will copy
+	//     return: map[x(int)][y(int)]uint8
+	//             Note: return x and y are NOT relative to the coordinate (0,0) on the
+	//             image, are relative to the coordinate (0,0) on the canvas
+	//
+	//     Note: The ImageData object is not a picture, it specifies a part (rectangle)
+	//     on the canvas, and holds information only for alpha channel of every pixel
+	//     inside that rectangle.
+	//
+	//     For every pixel in the map[x][y] there are one piece of information, the
+	//     alpha channel uint8 value (from 0-255; 0 is transparent and 255 is fully
+	//     visible)
+	//
+	//     Tip: After you have manipulated the color/alpha information in the
+	//     map[x][y], you can copy the image data back onto the canvas with the
+	//     putImageData() method.
+	//
+	// pr_br: Retorna um mapa map[x][y]uint8 com parte dos dados da imagem contida
+	// no retângulo especificado.
+	//     x: Coordenada x (em pixels) do canto superior esquerdo de onde os dados vão
+	//     ser copiados
+	//     y: Coordenada y (em pixels) do canto superior esquerdo de onde os dados vão
+	//     ser copiados
+	//     width: comprimento do retângulo a ser copiado
+	//     height: altura do retângulo a ser copiado
+	//     return: map[x(int)][y(int)]uint8
+	//             Nota: x e y do retorno não são relativos a coordenada (0,0) da
+	//             imagem, são relativos a coordenada (0,0) do canvas
+	//
+	//     Nota: Os dados da imagem não são uma figura, eles representam uma parte
+	//     retangular do canvas e guardam informações apenas do canal alpha de cada
+	//     pixel contido nessa área.
+	//
+	//     Para cada pixel contido no mapa há apenas uma peça da informação do canal
+	//     alpha com valores no formato uint8, com valoes de 0-255; onde, 0 é
+	//     transparente e 255 é totalmente visível
+	//
+	//     Dica: Depois de manipular as informações de cor/alpha contidas no map[x][y],
+	//     elas podem ser colocadas de volta no canvas com o método putImageData().
 	GetImageDataAlphaChannelOnly(x, y, width, height int) map[int]map[int]uint8
+
+	// en: Returns an ImageData map[x][y]bool that copies the pixel alpha channel for
+	// the specified rectangle on a canvas
+	//     x: The x coordinate (in pixels) of the upper-left corner to start copy from
+	//     y: The y coordinate (in pixels) of the upper-left corner to start copy from
+	//     width: The width of the rectangular area you will copy
+	//     height: The height of the rectangular area you will copy
+	//     minimumAcceptableValue: (alpha channel < minimumAcceptableValue) true:false
+	//     return: map[x(int)][y(int)]bool
+	//             Note: return x and y are NOT relative to the coordinate (0,0) on the
+	//             image, are relative to the coordinate (0,0) on the canvas
+	//
+	//     Note: The ImageData object is not a picture, it specifies a part (rectangle)
+	//     on the canvas, and holds information only for alpha channel of every pixel
+	//     inside that rectangle.
+	//
+	//     For every pixel in the map[x][y] there are one piece of information, the
+	//     alpha channel bool value, visible or invisible
+	//
+	//     Tip: After you have manipulated the color/alpha information in the
+	//     map[x][y], you can copy the image data back onto the canvas with the
+	//     putImageData() method.
+	//
+	// pr_br: Retorna um mapa map[x][y]bool com parte dos dados da imagem contida
+	// no retângulo especificado.
+	//     x: Coordenada x (em pixels) do canto superior esquerdo de onde os dados vão
+	//     ser copiados
+	//     y: Coordenada y (em pixels) do canto superior esquerdo de onde os dados vão
+	//     ser copiados
+	//     width: comprimento do retângulo a ser copiado
+	//     height: altura do retângulo a ser copiado
+	//     minimumAcceptableValue: (canal alpha < minimumAcceptableValue) true : false
+	//     return: map[x(int)][y(int)]bool
+	//             Nota: x e y do retorno não são relativos a coordenada (0,0) da
+	//             imagem, são relativos a coordenada (0,0) do canvas
+	//
+	//     Nota: Os dados da imagem não são uma figura, eles representam uma parte
+	//     retangular do canvas e guardam informações booleanas apenas do canal alpha
+	//     de cada pixel contido nessa área.
+	//
+	//     Para cada pixel contido no mapa há apenas uma peça da informação do canal
+	//     alpha com valores no formato bool, visível ou invisível.
+	//
+	//     Dica: Depois de manipular as informações de cor/alpha contidas no map[x][y],
+	//     elas podem ser colocadas de volta no canvas com o método putImageData().
 	GetImageDataCollisionByAlphaChannelValue(x, y, width, height int, minimumAcceptableValue uint8) map[int]map[int]bool
+
+	// en: Clears the specified pixels within a given rectangle
+	//     x: The x-coordinate of the upper-left corner of the rectangle to clear
+	//     y: The y-coordinate of the upper-left corner of the rectangle to clear
+	//     width: The width of the rectangle to clear, in pixels
+	//     height: The height of the rectangle to clear, in pixels
+	//
+	// pt_br: Limpa todos os pixels de um determinado retângulo
+	//     x: Coordenada x da parte superior esquerda do retângulo a ser limpo
+	//     y: Coordenada y da parte superior esquerda do retângulo a ser limpo
+	//     width: Comprimento do retângulo a ser limpo
+	//     height: Altura do retângulo a ser limpo
+	//
 	ClearRect(x, y, width, height int)
+
+	// en: Draws a "filled" rectangle
+	//     x: The x-coordinate of the upper-left corner of the rectangle
+	//     y: The y-coordinate of the upper-left corner of the rectangle
+	//     width: The width of the rectangle, in pixels
+	//     height: The height of the rectangle, in pixels
+	//
+	//     Tip: Use the fillStyle property to set a color, gradient, or pattern used to
+	//     fill the drawing.
+	//
+	// pt_br: Desenha um retângulo preenchido com "tinta"
+	//     x: Coordenada x da parte superior esquerda do retângulo
+	//     y: Coordenada y da parte superior esquerda do retângulo
+	//     width: Comprimento do retângulo
+	//     height: Altura do retângulo
+	//
+	//     Dica: Use a propriedade fillStile() para determinar a cor, gradiente ou
+	//     padrão a ser usado no reenchimento.
 	FillRect(x, y, width, height int)
 	DrawImage(image interface{}, value ...int)
 }
