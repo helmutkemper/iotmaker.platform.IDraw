@@ -261,4 +261,5 @@ type IDraw interface {
 	GetImageDataCollisionByAlphaChannelValue(x, y, width, height int, minimumAcceptableValue uint8) map[int]map[int]bool
 	ClearRect(x, y, width, height int)
 	FillRect(x, y, width, height int)
+	DrawImage(image interface{}, value ...int)
 }
