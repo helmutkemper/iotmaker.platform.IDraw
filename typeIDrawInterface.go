@@ -538,4 +538,5 @@ type IDraw interface {
 	//     Golang Sintaxe: platform.drawImage(img, sx, sy, sWidth, sHeight, x, y,
 	//                     width, height)
 	DrawImage(image interface{}, value ...int)
+	DrawImageMultiplesSprites(image interface{}, spriteW, spriteH int)
 }
