@@ -541,5 +541,5 @@ type IDraw interface {
 	//     Golang Sintaxe: platform.drawImage(img, sx, sy, sWidth, sHeight, x, y,
 	//                     width, height)
 	DrawImage(image interface{}, value ...int)
-	DrawImageMultiplesSprites(image interface{}, spriteWidth, spriteHeight, spriteFirstElementIndex, spriteLastElementIndex int, spriteChangeInterval time.Duration, x, y, width, height, lifeCycleLimit int)
+	DrawImageMultiplesSprites(image interface{}, spriteWidth, spriteHeight, spriteFirstElementIndex, spriteLastElementIndex int, spriteChangeInterval time.Duration, x, y, width, height, lifeCycleLimit, lifeCycleRepeatLimit int, lifeCycleRepeatInterval time.Duration)
 }
