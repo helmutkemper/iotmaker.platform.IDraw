@@ -1,6 +1,9 @@
 package iotmaker_platform_IDraw
 
-import "image/color"
+import (
+	"image/color"
+	"time"
+)
 
 // en: Interface with drawing methods. Originally this interface was based on web
 // browsers canvas element.
@@ -538,5 +541,5 @@ type IDraw interface {
 	//     Golang Sintaxe: platform.drawImage(img, sx, sy, sWidth, sHeight, x, y,
 	//                     width, height)
 	DrawImage(image interface{}, value ...int)
-	DrawImageMultiplesSprites(image interface{}, spriteW, spriteH int)
+	DrawImageMultiplesSprites(image interface{}, spriteWidth, spriteHeight, spriteFirstElementIndex, spriteLastElementIndex int, spriteChangeInterval time.Duration, x, y, width, height, lifeCycleLimit int)
 }
