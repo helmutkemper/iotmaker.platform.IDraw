@@ -1,6 +1,7 @@
 package iotmaker_platform_IDraw
 
 import (
+	iotmaker_platform_textMetrics "github.com/helmutkemper/iotmaker.platform.textMetrics"
 	"github.com/helmutkemper/iotmaker.platform.webbrowser/font"
 	"image/color"
 	"time"
@@ -561,8 +562,30 @@ type IDraw interface {
 	//     maxWidth: [Opcional] Comprimento máximo do texto em pixels
 	FillText(text string, x, y int, maxWidth ...int)
 
+	// en: Draws text on the canvas with no fill
+	//     text: Specifies the text that will be written on the canvas
+	//     x: The x coordinate where to start painting the text (relative to the
+	//     canvas)
+	//     y: The y coordinate where to start painting the text (relative to the
+	//     canvas)
+	//     maxWidth: [Optional] The maximum allowed width of the text, in pixels
+	//
+	// pt_br: Desenha um texto no elemento canvas sem preenchimento
+	//     text: Especifica o texto a ser escrito
+	//     x: coordenada x do texto a ser escrito (relativo ao elemento canvas)
+	//     y: coordenada x do texto a ser escrito (relativo ao elemento canvas)
+	//     maxWidth: [Opcional] Comprimento máximo do texto em pixels
+	StrokeText(text string, x, y int, maxWidth ...int)
+
 	// en: Sets the current font properties for text content
 	//
 	// pt_br: Define as propriedades da fonte atual
 	Font(font font.Font)
+
+	// en: Returns a struct TextMetrics that contains the width of the specified text
+	//     text: The text to be measured
+	//
+	// pt_br: Retorna o struct TextMetrics com os dados de comprimento do texto
+	//     text: Texto a ser medido
+	MeasureText(text string) iotmaker_platform_textMetrics.TextMetrics
 }
