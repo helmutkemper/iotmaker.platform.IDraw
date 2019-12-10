@@ -1,6 +1,7 @@
 package iotmaker_platform_IDraw
 
 import (
+	"github.com/helmutkemper/iotmaker.platform.webbrowser/font"
 	"image/color"
 	"time"
 )
@@ -541,5 +542,27 @@ type IDraw interface {
 	//     Golang Sintaxe: platform.drawImage(img, sx, sy, sWidth, sHeight, x, y,
 	//                     width, height)
 	DrawImage(image interface{}, value ...int)
+
+	// todo: descrição aqui
 	DrawImageMultiplesSprites(image interface{}, spriteWidth, spriteHeight, spriteFirstElementIndex, spriteLastElementIndex int, spriteChangeInterval time.Duration, x, y, width, height, lifeCycleLimit, lifeCycleRepeatLimit int, lifeCycleRepeatInterval time.Duration)
+
+	// en: Draws "filled" text on the canvas
+	//     text: Specifies the text that will be written on the canvas
+	//     x: The x coordinate where to start painting the text (relative to the
+	//     canvas)
+	//     y: The y coordinate where to start painting the text (relative to the
+	//     canvas)
+	//     maxWidth: [Optional] The maximum allowed width of the text, in pixels
+	//
+	// pt_br: Desenha um texto "preenchido" no elemento canvas
+	//     text: Especifica o texto a ser escrito
+	//     x: coordenada x do texto a ser escrito (relativo ao elemento canvas)
+	//     y: coordenada x do texto a ser escrito (relativo ao elemento canvas)
+	//     maxWidth: [Opcional] Comprimento máximo do texto em pixels
+	FillText(text string, x, y int, maxWidth ...int)
+
+	// en: Sets the current font properties for text content
+	//
+	// pt_br: Define as propriedades da fonte atual
+	Font(font font.Font)
 }
