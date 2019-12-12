@@ -588,4 +588,8 @@ type IDraw interface {
 	// pt_br: Retorna o struct TextMetrics com os dados de comprimento do texto
 	//     text: Texto a ser medido
 	MeasureText(text string) iotmaker_platform_textMetrics.TextMetrics
+
+	ResetFillStyle()
+	ResetStrokeStyle()
+	ShadowReset()
 }
