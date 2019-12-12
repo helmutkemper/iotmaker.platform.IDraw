@@ -591,5 +591,5 @@ type IDraw interface {
 
 	ResetFillStyle()
 	ResetStrokeStyle()
-	ShadowReset()
+	ResetShadow()
 }
