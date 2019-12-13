@@ -3,6 +3,7 @@ package iotmaker_platform_IDraw
 import (
 	iotmaker_platform_textMetrics "github.com/helmutkemper/iotmaker.platform.textMetrics"
 	"github.com/helmutkemper/iotmaker.platform.webbrowser/font"
+	"github.com/helmutkemper/iotmaker.platform.webbrowser/mouse"
 	"image/color"
 	"time"
 )
@@ -111,7 +112,7 @@ type IDraw interface {
 	//     var ctx = c.getContext("2d");
 	//     ctx.lineWidth = 10;
 	//     ctx.strokeRect(20, 20, 80, 100);
-	SetLineWidth(value int)
+	SetLineWidth(value interface{})
 
 	// en: Return the current line width in pixels
 	//     Default value: 1
@@ -599,4 +600,5 @@ type IDraw interface {
 	ResetStrokeStyle()
 	ResetShadow()
 	ResetLineWidth()
+	SetMouseCursor(cursor mouse.CursorType)
 }
