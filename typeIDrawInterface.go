@@ -371,7 +371,13 @@ type IDraw interface {
 	//
 	//     Dica: Depois de manipular as informações de cor/alpha contidas no map[x][y],
 	//     elas podem ser colocadas de volta no canvas com o método putImageData().
-	GetImageData(x, y, width, height int) map[int]map[int]color.RGBA
+	GetImageData(x, y, width, height int) interface{}
+
+	// todo: documentation
+	GetImageDataAlphaChannelByCoordinate(data interface{}, x, y, width int) uint8
+	GetImageDataPixelByCoordinate(data interface{}, x, y, width int) color.RGBA
+
+	//GetImageData(x, y, width, height int) map[int]map[int]color.RGBA
 
 	// en: Returns an ImageData map[x][y]uint8 that copies the pixel alpha channel for
 	// the specified rectangle on a canvas
