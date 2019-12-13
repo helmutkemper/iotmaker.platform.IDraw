@@ -598,4 +598,5 @@ type IDraw interface {
 	ResetFillStyle()
 	ResetStrokeStyle()
 	ResetShadow()
+	ResetLineWidth()
 }
