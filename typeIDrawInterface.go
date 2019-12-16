@@ -601,4 +601,5 @@ type IDraw interface {
 	ResetShadow()
 	ResetLineWidth()
 	SetMouseCursor(cursor mouse.CursorType)
+	AddEventListener(eventType interface{}, mouseMoveEvt interface{})
 }
