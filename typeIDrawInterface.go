@@ -602,4 +602,5 @@ type IDraw interface {
 	ResetLineWidth()
 	SetMouseCursor(cursor mouse.CursorType)
 	AddEventListener(eventType interface{}, mouseMoveEvt interface{})
+	SetPixel(x, y int, pixelColor color.RGBA)
 }
