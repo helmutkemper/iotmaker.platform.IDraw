@@ -2,6 +2,7 @@ package iotmaker_platform_IDraw
 
 import (
 	iotmaker_platform_textMetrics "github.com/helmutkemper/iotmaker.platform.textMetrics"
+	"github.com/helmutkemper/iotmaker.platform.webbrowser/canvas"
 	"github.com/helmutkemper/iotmaker.platform.webbrowser/font"
 	"github.com/helmutkemper/iotmaker.platform.webbrowser/mouse"
 	"image/color"
@@ -372,7 +373,10 @@ type IDraw interface {
 	//
 	//     Dica: Depois de manipular as informações de cor/alpha contidas no map[x][y],
 	//     elas podem ser colocadas de volta no canvas com o método putImageData().
-	GetImageData(x, y, width, height int) interface{}
+	GetImageData(x, y, width, height int, separeData bool) interface{}
+
+	// todo: documentation
+	PutImageData(imgData interface{}, values ...int)
 
 	// todo: documentation
 	GetImageDataAlphaChannelByCoordinate(data interface{}, x, y, width int) uint8
@@ -605,4 +609,7 @@ type IDraw interface {
 	SetPixel(x, y int, pixel interface{})
 	MakePixel(pixelColor color.RGBA) interface{}
 	CreateImageData(width, height int, pixelColor color.RGBA) interface{}
+
+	//todo: documentation
+	NewCanvasWith2DContext(document interface{}, id string, width, height int) canvas.Canvas
 }
