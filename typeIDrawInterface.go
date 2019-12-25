@@ -39,7 +39,7 @@ type IDraw interface {
 	//     X: Coordenada x para onde o ponto vai ser deslocado
 	//     Y: Coordenada y para onde o ponto vai ser deslocado
 	//     Dica: Use o método stroke() para desenhar a rota no elemento canvas
-	MoveTo(x, y int)
+	MoveTo(x, y float64)
 
 	// en: Creates an arc/curve between two tangents
 	//     x0:     The x-axis coordinate of the first control point.
@@ -63,7 +63,7 @@ type IDraw interface {
 	//     ctx.arcTo(150, 20, 150, 70, 50); // Create an arc
 	//     ctx.lineTo(150, 120);            // Continue with vertical line
 	//     ctx.stroke();                    // Draw it
-	ArcTo(x, y, radius, startAngle, endAngle int)
+	ArcTo(x, y, radius, startAngle, endAngle float64)
 
 	// en: Adds a new point and creates a line from that point to the last specified
 	// point in the canvas. (this method does not draw the line).
@@ -76,7 +76,7 @@ type IDraw interface {
 	//     x: coordenada x para a criação da linha
 	//     y: coordenada y para a criação da linha
 	//     Dica: Use o método stroke() para desenhar a rota no elemento canvas
-	LineTo(x, y int)
+	LineTo(x, y float64)
 
 	// en: Creates a path from the current point back to the starting point
 	//     Tip: Use the stroke() method to actually draw the path on the canvas.
@@ -88,7 +88,7 @@ type IDraw interface {
 	//     Dica: Use o método fill() para preencher o desenho (petro é a cor padrão).
 	//           Use a propriedade fillStyle para mudar a cor de preenchimento ou
 	//           adicionar um gradiente
-	ClosePath(x, y int)
+	ClosePath(x, y float64)
 
 	// en: The stroke() method actually draws the path you have defined with all those
 	//     moveTo() and lineTo() methods. The default color is black.
@@ -129,21 +129,21 @@ type IDraw interface {
 	//     ctx.lineWidth = 10;
 	//     ctx.strokeRect(20, 20, 80, 100);
 	//     var l = ctx.lineWidth;
-	GetLineWidth() int
+	GetLineWidth() float64
 
 	// en: Sets the blur level for shadows
 	//     Default value: 0
 	//
 	// pt_br: Define o valor de borrão da sombra
 	//     Valor padrão: 0
-	SetShadowBlur(value int)
+	SetShadowBlur(value float64)
 
 	// en: Return the blur level for shadows
 	//     Default value: 0
 	//
 	// pt_br: Retorna o valor de borrão da sombra
 	//     Valor padrão: 0
-	GetShadowBlur() int
+	GetShadowBlur() float64
 
 	// en: Sets the color to use for shadows
 	//     Note: Use the shadowColor property together with the shadowBlur property to
@@ -179,7 +179,7 @@ type IDraw interface {
 	//     afastadas a esquerda (em relação a parte mais a esquerda da forma)
 	//     Dica: Para ajustar a distância vertical, use a propriedade shadowOffsetY
 	//     Valor padrão: 0
-	ShadowOffsetX(value int)
+	ShadowOffsetX(value float64)
 
 	// en: Sets or returns the vertical distance of the shadow from the shape
 	//     The shadowOffsetY property sets or returns the vertical distance of the
@@ -202,7 +202,7 @@ type IDraw interface {
 	//     afastadas para cima (em relação a parte mais elevada da forma)
 	//     Dica: Para ajustar a distância horizontal, use a propriedade shadowOffsetX
 	//     Valor padrão: 0
-	ShadowOffsetY(value int)
+	ShadowOffsetY(value float64)
 
 	// en: Specifies the colors and stop positions in a gradient object
 	//     gradient: A gradient object created by CreateLinearGradient() or
@@ -373,16 +373,16 @@ type IDraw interface {
 	//
 	//     Dica: Depois de manipular as informações de cor/alpha contidas no map[x][y],
 	//     elas podem ser colocadas de volta no canvas com o método putImageData().
-	GetImageData(x, y, width, height int, separeData bool) interface{}
+	//GetImageData(x, y, width, height int, separeData bool) interface{}
 
 	// todo: documentation
-	PutImageData(imgData interface{}, values ...int)
+	PutImageData(imgData interface{}, values ...float64)
 
 	// todo: documentation
 	GetImageDataAlphaChannelByCoordinate(data interface{}, x, y, width int) uint8
 	GetImageDataPixelByCoordinate(data interface{}, x, y, width int) color.RGBA
 
-	//GetImageData(x, y, width, height int) map[int]map[int]color.RGBA
+	//(x, y, width, height float64) map[int]map[int]color.RGBA
 
 	// en: Returns an ImageData map[x][y]uint8 that copies the pixel alpha channel for
 	// the specified rectangle on a canvas
@@ -488,7 +488,7 @@ type IDraw interface {
 	//     width: Comprimento do retângulo a ser limpo
 	//     height: Altura do retângulo a ser limpo
 	//
-	ClearRect(x, y, width, height int)
+	ClearRect(x, y, width, height float64)
 
 	// en: Draws a "filled" rectangle
 	//     x: The x-coordinate of the upper-left corner of the rectangle
@@ -507,7 +507,7 @@ type IDraw interface {
 	//
 	//     Dica: Use a propriedade fillStile() para determinar a cor, gradiente ou
 	//     padrão a ser usado no reenchimento.
-	FillRect(x, y, width, height int)
+	FillRect(x, y, width, height float64)
 
 	// en: Draws an image, canvas, or video onto the canvas
 	//     image: Specifies the image, canvas, or video element to use
@@ -553,10 +553,10 @@ type IDraw interface {
 	//     imagem final
 	//     Golang Sintaxe: platform.drawImage(img, sx, sy, sWidth, sHeight, x, y,
 	//                     width, height)
-	DrawImage(image interface{}, value ...int)
+	DrawImage(image interface{}, value ...float64)
 
 	// todo: descrição aqui
-	DrawImageMultiplesSprites(image interface{}, spriteWidth, spriteHeight, spriteFirstElementIndex, spriteLastElementIndex int, spriteChangeInterval time.Duration, x, y, width, height, clearRectX, clearRectY, clearRectWidth, clearRectHeight, lifeCycleLimit, lifeCycleRepeatLimit int, lifeCycleRepeatInterval time.Duration)
+	DrawImageMultiplesSprites(image interface{}, spriteWidth, spriteHeight, spriteFirstElementIndex, spriteLastElementIndex float64, spriteChangeInterval time.Duration, x, y, width, height, clearRectX, clearRectY, clearRectWidth, clearRectHeight, lifeCycleLimit, lifeCycleRepeatLimit float64, lifeCycleRepeatInterval time.Duration)
 
 	// en: Draws "filled" text on the canvas
 	//     text: Specifies the text that will be written on the canvas
@@ -571,7 +571,7 @@ type IDraw interface {
 	//     x: coordenada x do texto a ser escrito (relativo ao elemento canvas)
 	//     y: coordenada x do texto a ser escrito (relativo ao elemento canvas)
 	//     maxWidth: [Opcional] Comprimento máximo do texto em pixels
-	FillText(text string, x, y int, maxWidth ...int)
+	FillText(text string, x, y float64, maxWidth ...float64)
 
 	// en: Draws text on the canvas with no fill
 	//     text: Specifies the text that will be written on the canvas
@@ -586,7 +586,7 @@ type IDraw interface {
 	//     x: coordenada x do texto a ser escrito (relativo ao elemento canvas)
 	//     y: coordenada x do texto a ser escrito (relativo ao elemento canvas)
 	//     maxWidth: [Opcional] Comprimento máximo do texto em pixels
-	StrokeText(text string, x, y int, maxWidth ...int)
+	StrokeText(text string, x, y float64, maxWidth ...float64)
 
 	// en: Sets the current font properties for text content
 	//
@@ -606,10 +606,10 @@ type IDraw interface {
 	ResetLineWidth()
 	SetMouseCursor(cursor mouse.CursorType)
 	AddEventListener(eventType interface{}, mouseMoveEvt interface{})
-	SetPixel(x, y int, pixel interface{})
+	SetPixel(x, y float64, pixel interface{})
 	MakePixel(pixelColor color.RGBA) interface{}
-	CreateImageData(width, height int, pixelColor color.RGBA) interface{}
+	CreateImageData(width, height float64, pixelColor color.RGBA) interface{}
 
 	//todo: documentation
-	NewCanvasWith2DContext(document interface{}, id string, width, height int) canvas.Canvas
+	NewCanvasWith2DContext(document interface{}, id string, width, height float64) canvas.Canvas
 }
