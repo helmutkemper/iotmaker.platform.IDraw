@@ -612,4 +612,5 @@ type IDraw interface {
 
 	//todo: documentation
 	NewCanvasWith2DContext(document interface{}, id string, width, height float64) canvas.Canvas
+	GetContext() interface{}
 }
