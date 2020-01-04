@@ -1,10 +1,10 @@
 package iotmaker_platform_IDraw
 
 import (
-	iotmaker_platform_textMetrics "github.com/helmutkemper/iotmaker.platform.textMetrics"
-	"github.com/helmutkemper/iotmaker.platform.webbrowser/canvas"
-	"github.com/helmutkemper/iotmaker.platform.webbrowser/font"
-	"github.com/helmutkemper/iotmaker.platform.webbrowser/mouse"
+	iotmaker_platform_textMetrics "github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.textMetrics"
+	"github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.webbrowser/canvas"
+	"github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.webbrowser/font"
+	"github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.webbrowser/mouse"
 	"image/color"
 	"time"
 )
