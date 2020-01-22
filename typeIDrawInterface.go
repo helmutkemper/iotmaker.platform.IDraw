@@ -39,7 +39,7 @@ type IDraw interface {
 	//     X: Coordenada x para onde o ponto vai ser deslocado
 	//     Y: Coordenada y para onde o ponto vai ser deslocado
 	//     Dica: Use o método stroke() para desenhar a rota no elemento canvas
-	MoveTo(x, y float64)
+	MoveTo(x, y interface{})
 
 	// en: Creates an arc/curve between two tangents
 	//     x0:     The x-axis coordinate of the first control point.
@@ -63,7 +63,7 @@ type IDraw interface {
 	//     ctx.arcTo(150, 20, 150, 70, 50); // Create an arc
 	//     ctx.lineTo(150, 120);            // Continue with vertical line
 	//     ctx.stroke();                    // Draw it
-	ArcTo(x, y, radius, startAngle, endAngle float64)
+	ArcTo(x, y, radius, startAngle, endAngle interface{})
 
 	// en: Adds a new point and creates a line from that point to the last specified
 	// point in the canvas. (this method does not draw the line).
@@ -76,7 +76,7 @@ type IDraw interface {
 	//     x: coordenada x para a criação da linha
 	//     y: coordenada y para a criação da linha
 	//     Dica: Use o método stroke() para desenhar a rota no elemento canvas
-	LineTo(x, y float64)
+	LineTo(x, y interface{})
 
 	// en: Creates a path from the current point back to the starting point
 	//     Tip: Use the stroke() method to actually draw the path on the canvas.
@@ -88,7 +88,7 @@ type IDraw interface {
 	//     Dica: Use o método fill() para preencher o desenho (petro é a cor padrão).
 	//           Use a propriedade fillStyle para mudar a cor de preenchimento ou
 	//           adicionar um gradiente
-	ClosePath(x, y float64)
+	ClosePath(x, y interface{})
 
 	// en: The stroke() method actually draws the path you have defined with all those
 	//     moveTo() and lineTo() methods. The default color is black.
@@ -488,7 +488,7 @@ type IDraw interface {
 	//     width: Comprimento do retângulo a ser limpo
 	//     height: Altura do retângulo a ser limpo
 	//
-	ClearRect(x, y, width, height float64)
+	ClearRect(x, y, width, height interface{})
 
 	// en: Draws a "filled" rectangle
 	//     x: The x-coordinate of the upper-left corner of the rectangle
@@ -553,7 +553,7 @@ type IDraw interface {
 	//     imagem final
 	//     Golang Sintaxe: platform.drawImage(img, sx, sy, sWidth, sHeight, x, y,
 	//                     width, height)
-	DrawImage(image interface{}, value ...float64)
+	DrawImage(image interface{}, value ...interface{})
 
 	// todo: descrição aqui
 	DrawImageMultiplesSprites(image interface{}, spriteWidth, spriteHeight, spriteFirstElementIndex, spriteLastElementIndex float64, spriteChangeInterval time.Duration, x, y, width, height, clearRectX, clearRectY, clearRectWidth, clearRectHeight, lifeCycleLimit, lifeCycleRepeatLimit float64, lifeCycleRepeatInterval time.Duration)
@@ -608,7 +608,7 @@ type IDraw interface {
 	AddEventListener(eventType interface{}, mouseMoveEvt interface{})
 	SetPixel(x, y float64, pixel interface{})
 	MakePixel(pixelColor color.RGBA) interface{}
-	CreateImageData(width, height float64, pixelColor color.RGBA) interface{}
+	CreateImageData(width, height interface{}, pixelColor color.RGBA) interface{}
 
 	//todo: documentation
 	NewCanvasWith2DContext(document interface{}, id string, width, height float64) canvas.Canvas
