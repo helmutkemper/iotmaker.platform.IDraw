@@ -1,7 +1,7 @@
 package iotmaker_platform_IDraw
 
 import (
-	iotmaker_platform_textMetrics "github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.textMetrics"
+	iotmakerPlatformTextMetrics "github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.textMetrics"
 	"github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.webbrowser/canvas"
 	"github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.webbrowser/font"
 	"github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.webbrowser/mouse"
@@ -598,7 +598,7 @@ type IDraw interface {
 	//
 	// pt_br: Retorna o struct TextMetrics com os dados de comprimento do texto
 	//     text: Texto a ser medido
-	MeasureText(text string) iotmaker_platform_textMetrics.TextMetrics
+	MeasureText(text string) iotmakerPlatformTextMetrics.TextMetrics
 
 	ResetFillStyle()
 	ResetStrokeStyle()
