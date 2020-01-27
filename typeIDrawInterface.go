@@ -571,7 +571,7 @@ type IDraw interface {
 	//     x: coordenada x do texto a ser escrito (relativo ao elemento canvas)
 	//     y: coordenada x do texto a ser escrito (relativo ao elemento canvas)
 	//     maxWidth: [Opcional] Comprimento máximo do texto em pixels
-	FillText(text string, x, y float64, maxWidth ...float64)
+	FillText(text string, x, y int, maxWidth ...int)
 
 	// en: Draws text on the canvas with no fill
 	//     text: Specifies the text that will be written on the canvas
@@ -586,7 +586,7 @@ type IDraw interface {
 	//     x: coordenada x do texto a ser escrito (relativo ao elemento canvas)
 	//     y: coordenada x do texto a ser escrito (relativo ao elemento canvas)
 	//     maxWidth: [Opcional] Comprimento máximo do texto em pixels
-	StrokeText(text string, x, y float64, maxWidth ...float64)
+	StrokeText(text string, x, y int, maxWidth ...int)
 
 	// en: Sets the current font properties for text content
 	//
