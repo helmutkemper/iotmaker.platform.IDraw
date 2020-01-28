@@ -613,4 +613,14 @@ type IDraw interface {
 	//todo: documentation
 	NewCanvasWith2DContext(document interface{}, id string, width, height float64) canvas.Canvas
 	GetContext() interface{}
+
+	// en: Saves the state of the current context
+	//
+	// pt_br: Salva o estado atual do contexto atual
+	Save()
+
+	// en: Returns previously saved path state and attributes
+	//
+	// pt_br: Restaura o contexto e atributos previamente salvos
+	Restore()
 }
