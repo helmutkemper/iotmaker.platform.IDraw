@@ -129,21 +129,21 @@ type IDraw interface {
 	//     ctx.lineWidth = 10;
 	//     ctx.strokeRect(20, 20, 80, 100);
 	//     var l = ctx.lineWidth;
-	GetLineWidth() float64
+	GetLineWidth() int
 
 	// en: Sets the blur level for shadows
 	//     Default value: 0
 	//
 	// pt_br: Define o valor de borrão da sombra
 	//     Valor padrão: 0
-	SetShadowBlur(value float64)
+	SetShadowBlur(value int)
 
 	// en: Return the blur level for shadows
 	//     Default value: 0
 	//
 	// pt_br: Retorna o valor de borrão da sombra
 	//     Valor padrão: 0
-	GetShadowBlur() float64
+	GetShadowBlur() int
 
 	// en: Sets the color to use for shadows
 	//     Note: Use the shadowColor property together with the shadowBlur property to
@@ -179,7 +179,7 @@ type IDraw interface {
 	//     afastadas a esquerda (em relação a parte mais a esquerda da forma)
 	//     Dica: Para ajustar a distância vertical, use a propriedade shadowOffsetY
 	//     Valor padrão: 0
-	ShadowOffsetX(value float64)
+	ShadowOffsetX(value int)
 
 	// en: Sets or returns the vertical distance of the shadow from the shape
 	//     The shadowOffsetY property sets or returns the vertical distance of the
@@ -202,7 +202,7 @@ type IDraw interface {
 	//     afastadas para cima (em relação a parte mais elevada da forma)
 	//     Dica: Para ajustar a distância horizontal, use a propriedade shadowOffsetX
 	//     Valor padrão: 0
-	ShadowOffsetY(value float64)
+	ShadowOffsetY(value int)
 
 	// en: Specifies the colors and stop positions in a gradient object
 	//     gradient: A gradient object created by CreateLinearGradient() or
@@ -227,7 +227,7 @@ type IDraw interface {
 	//     adicionar várias cores ao gradiente, porém, se você omitir o método, o
 	//     gradiente não será visivel. Você tem a obrigação de chamar o método pelo
 	//     menos uma vez com uma cor para que o gradiente seja visível.
-	AddColorStopPosition(gradient interface{}, stop float64, color color.RGBA)
+	AddColorStopPosition(gradient interface{}, stop int, color color.RGBA)
 
 	// en: The fill() method fills the current drawing (path). The default color is
 	//     black.
@@ -376,13 +376,13 @@ type IDraw interface {
 	//GetImageData(x, y, width, height int, separeData bool) interface{}
 
 	// todo: documentation
-	PutImageData(imgData interface{}, values ...float64)
+	PutImageData(imgData interface{}, values ...int)
 
 	// todo: documentation
 	GetImageDataAlphaChannelByCoordinate(data interface{}, x, y, width int) uint8
 	GetImageDataPixelByCoordinate(data interface{}, x, y, width int) color.RGBA
 
-	//(x, y, width, height float64) map[int]map[int]color.RGBA
+	//(x, y, width, height int) map[int]map[int]color.RGBA
 
 	// en: Returns an ImageData map[x][y]uint8 that copies the pixel alpha channel for
 	// the specified rectangle on a canvas
@@ -507,7 +507,7 @@ type IDraw interface {
 	//
 	//     Dica: Use a propriedade fillStile() para determinar a cor, gradiente ou
 	//     padrão a ser usado no reenchimento.
-	FillRect(x, y, width, height float64)
+	FillRect(x, y, width, height int)
 
 	// en: Draws an image, canvas, or video onto the canvas
 	//     image: Specifies the image, canvas, or video element to use
@@ -556,7 +556,7 @@ type IDraw interface {
 	DrawImage(image interface{}, value ...interface{})
 
 	// todo: descrição aqui
-	DrawImageMultiplesSprites(image interface{}, spriteWidth, spriteHeight, spriteFirstElementIndex, spriteLastElementIndex float64, spriteChangeInterval time.Duration, x, y, width, height, clearRectX, clearRectY, clearRectWidth, clearRectHeight, lifeCycleLimit, lifeCycleRepeatLimit float64, lifeCycleRepeatInterval time.Duration)
+	DrawImageMultiplesSprites(image interface{}, spriteWidth, spriteHeight, spriteFirstElementIndex, spriteLastElementIndex int, spriteChangeInterval time.Duration, x, y, width, height, clearRectX, clearRectY, clearRectWidth, clearRectHeight, lifeCycleLimit, lifeCycleRepeatLimit int, lifeCycleRepeatInterval time.Duration)
 
 	// en: Draws "filled" text on the canvas
 	//     text: Specifies the text that will be written on the canvas
@@ -606,12 +606,12 @@ type IDraw interface {
 	ResetLineWidth()
 	SetMouseCursor(cursor mouse.CursorType)
 	AddEventListener(eventType interface{}, mouseMoveEvt interface{})
-	SetPixel(x, y float64, pixel interface{})
+	SetPixel(x, y int, pixel interface{})
 	MakePixel(pixelColor color.RGBA) interface{}
 	CreateImageData(width, height interface{}, pixelColor color.RGBA) interface{}
 
 	//todo: documentation
-	NewCanvasWith2DContext(document interface{}, id string, width, height float64) canvas.Canvas
+	NewCanvasWith2DContext(document interface{}, id string, width, height int) canvas.Canvas
 	GetContext() interface{}
 
 	// en: Saves the state of the current context
