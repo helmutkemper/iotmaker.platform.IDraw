@@ -27,7 +27,7 @@ type ICanvasGradient interface {
 	//     adicionar várias cores ao gradiente, porém, se você omitir o método, o
 	//     gradiente não será visivel. Você tem a obrigação de chamar o método pelo
 	//     menos uma vez com uma cor para que o gradiente seja visível.
-	AddColorStopPosition(gradient interface{}, stop int, color color.RGBA)
+	AddColorStopPosition(gradient interface{}, stop float64, color color.RGBA)
 
 	// en: This method of the Canvas 2D API creates a gradient along the line
 	// connecting two given coordinates, starting at (x0, y0) point and ending at

@@ -136,7 +136,7 @@ type IDraw interface {
 	//
 	// pt_br: Define o valor de borrão da sombra
 	//     Valor padrão: 0
-	SetShadowBlur(value int)
+	SetShadowBlur(value interface{})
 
 	// en: Return the blur level for shadows
 	//     Default value: 0
@@ -227,7 +227,7 @@ type IDraw interface {
 	//     adicionar várias cores ao gradiente, porém, se você omitir o método, o
 	//     gradiente não será visivel. Você tem a obrigação de chamar o método pelo
 	//     menos uma vez com uma cor para que o gradiente seja visível.
-	AddColorStopPosition(gradient interface{}, stop int, color color.RGBA)
+	AddColorStopPosition(gradient interface{}, stop float64, color color.RGBA)
 
 	// en: The fill() method fills the current drawing (path). The default color is
 	//     black.

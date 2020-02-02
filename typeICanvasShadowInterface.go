@@ -9,7 +9,7 @@ type ICanvasShadow interface {
 	//
 	// pt_br: Define o valor de borrão da sombra
 	//     Valor padrão: 0
-	SetShadowBlur(value int)
+	SetShadowBlur(value interface{})
 
 	// en: Sets the color to use for shadows
 	//     Note: Use the shadowColor property together with the shadowBlur property to
