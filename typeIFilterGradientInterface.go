@@ -1,6 +1,8 @@
 package iotmaker_platform_IDraw
 
 type IFilterGradientInterface interface {
+	SetP0(point interface{})
+	SetP1(point interface{})
 	PrepareFilter(platform ICanvasGradient)
 
 	// en: The fill() method fills the current drawing (path). The default color is
