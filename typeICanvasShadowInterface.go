@@ -1,6 +1,9 @@
 package iotmaker_platform_IDraw
 
-import "image/color"
+import (
+	commonTypes "github.com/helmutkemper/iotmaker.santa_isabel_theater.commonTypes"
+	"image/color"
+)
 
 type ICanvasShadow interface {
 
@@ -45,7 +48,7 @@ type ICanvasShadow interface {
 	//     afastadas a esquerda (em relação a parte mais a esquerda da forma)
 	//     Dica: Para ajustar a distância vertical, use a propriedade shadowOffsetY
 	//     Valor padrão: 0
-	ShadowOffsetX(value int)
+	ShadowOffsetX(value commonTypes.Number)
 
 	// en: Sets or returns the vertical distance of the shadow from the shape
 	//     The shadowOffsetY property sets or returns the vertical distance of the
@@ -68,5 +71,5 @@ type ICanvasShadow interface {
 	//     afastadas para cima (em relação a parte mais elevada da forma)
 	//     Dica: Para ajustar a distância horizontal, use a propriedade shadowOffsetX
 	//     Valor padrão: 0
-	ShadowOffsetY(value int)
+	ShadowOffsetY(value commonTypes.Number)
 }

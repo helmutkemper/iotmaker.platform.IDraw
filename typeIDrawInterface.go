@@ -1,6 +1,7 @@
 package iotmaker_platform_IDraw
 
 import (
+	commonTypes "github.com/helmutkemper/iotmaker.santa_isabel_theater.commonTypes"
 	iotmakerPlatformTextMetrics "github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.textMetrics"
 	"github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.webbrowser/canvas"
 	"github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.webbrowser/font"
@@ -129,7 +130,7 @@ type IDraw interface {
 	//     ctx.lineWidth = 10;
 	//     ctx.strokeRect(20, 20, 80, 100);
 	//     var l = ctx.lineWidth;
-	GetLineWidth() int
+	GetLineWidth() commonTypes.Number
 
 	// en: Sets the blur level for shadows
 	//     Default value: 0
@@ -143,7 +144,7 @@ type IDraw interface {
 	//
 	// pt_br: Retorna o valor de borrão da sombra
 	//     Valor padrão: 0
-	GetShadowBlur() int
+	GetShadowBlur() commonTypes.Number
 
 	// en: Sets the color to use for shadows
 	//     Note: Use the shadowColor property together with the shadowBlur property to
@@ -179,7 +180,7 @@ type IDraw interface {
 	//     afastadas a esquerda (em relação a parte mais a esquerda da forma)
 	//     Dica: Para ajustar a distância vertical, use a propriedade shadowOffsetY
 	//     Valor padrão: 0
-	ShadowOffsetX(value int)
+	ShadowOffsetX(value commonTypes.Number)
 
 	// en: Sets or returns the vertical distance of the shadow from the shape
 	//     The shadowOffsetY property sets or returns the vertical distance of the
@@ -202,7 +203,7 @@ type IDraw interface {
 	//     afastadas para cima (em relação a parte mais elevada da forma)
 	//     Dica: Para ajustar a distância horizontal, use a propriedade shadowOffsetX
 	//     Valor padrão: 0
-	ShadowOffsetY(value int)
+	ShadowOffsetY(value commonTypes.Number)
 
 	// en: Specifies the colors and stop positions in a gradient object
 	//     gradient: A gradient object created by CreateLinearGradient() or
@@ -227,7 +228,7 @@ type IDraw interface {
 	//     adicionar várias cores ao gradiente, porém, se você omitir o método, o
 	//     gradiente não será visivel. Você tem a obrigação de chamar o método pelo
 	//     menos uma vez com uma cor para que o gradiente seja visível.
-	AddColorStopPosition(gradient interface{}, stop float64, color color.RGBA)
+	AddColorStopPosition(gradient interface{}, stop commonTypes.Number, color color.RGBA)
 
 	// en: The fill() method fills the current drawing (path). The default color is
 	//     black.
@@ -379,8 +380,8 @@ type IDraw interface {
 	PutImageData(imgData interface{}, values ...int)
 
 	// todo: documentation
-	GetImageDataAlphaChannelByCoordinate(data interface{}, x, y, width int) uint8
-	GetImageDataPixelByCoordinate(data interface{}, x, y, width int) color.RGBA
+	GetImageDataAlphaChannelByCoordinate(data interface{}, x, y, width commonTypes.Number) uint8
+	GetImageDataPixelByCoordinate(data interface{}, x, y, width commonTypes.Number) color.RGBA
 
 	//(x, y, width, height int) map[int]map[int]color.RGBA
 
@@ -428,7 +429,7 @@ type IDraw interface {
 	//
 	//     Dica: Depois de manipular as informações de cor/alpha contidas no map[x][y],
 	//     elas podem ser colocadas de volta no canvas com o método putImageData().
-	GetImageDataAlphaChannelOnly(x, y, width, height int) map[int]map[int]uint8
+	GetImageDataAlphaChannelOnly(x, y, width, height commonTypes.Number) map[int]map[int]uint8
 
 	// en: Returns an ImageData map[x][y]bool that copies the pixel alpha channel for
 	// the specified rectangle on a canvas
@@ -474,7 +475,7 @@ type IDraw interface {
 	//
 	//     Dica: Depois de manipular as informações de cor/alpha contidas no map[x][y],
 	//     elas podem ser colocadas de volta no canvas com o método putImageData().
-	GetImageDataCollisionByAlphaChannelValue(x, y, width, height int, minimumAcceptableValue uint8) map[int]map[int]bool
+	GetImageDataCollisionByAlphaChannelValue(x, y, width, height commonTypes.Number, minimumAcceptableValue uint8) map[int]map[int]bool
 
 	// en: Clears the specified pixels within a given rectangle
 	//     x: The x-coordinate of the upper-left corner of the rectangle to clear
@@ -507,7 +508,7 @@ type IDraw interface {
 	//
 	//     Dica: Use a propriedade fillStile() para determinar a cor, gradiente ou
 	//     padrão a ser usado no reenchimento.
-	FillRect(x, y, width, height int)
+	FillRect(x, y, width, height commonTypes.Number)
 
 	// en: Draws an image, canvas, or video onto the canvas
 	//     image: Specifies the image, canvas, or video element to use
@@ -556,7 +557,7 @@ type IDraw interface {
 	DrawImage(image interface{}, value ...interface{})
 
 	// todo: descrição aqui
-	DrawImageMultiplesSprites(image interface{}, spriteWidth, spriteHeight, spriteFirstElementIndex, spriteLastElementIndex int, spriteChangeInterval time.Duration, x, y, width, height, clearRectX, clearRectY, clearRectWidth, clearRectHeight, lifeCycleLimit, lifeCycleRepeatLimit int, lifeCycleRepeatInterval time.Duration)
+	DrawImageMultiplesSprites(image interface{}, spriteWidth, spriteHeight, spriteFirstElementIndex, spriteLastElementIndex commonTypes.Number, spriteChangeInterval time.Duration, x, y, width, height, clearRectX, clearRectY, clearRectWidth, clearRectHeight, lifeCycleLimit, lifeCycleRepeatLimit commonTypes.Number, lifeCycleRepeatInterval time.Duration)
 
 	// en: Draws "filled" text on the canvas
 	//     text: Specifies the text that will be written on the canvas
@@ -571,7 +572,7 @@ type IDraw interface {
 	//     x: coordenada x do texto a ser escrito (relativo ao elemento canvas)
 	//     y: coordenada x do texto a ser escrito (relativo ao elemento canvas)
 	//     maxWidth: [Opcional] Comprimento máximo do texto em pixels
-	FillText(text string, x, y int, maxWidth ...int)
+	FillText(text string, x, y commonTypes.Number, maxWidth ...commonTypes.Number)
 
 	// en: Draws text on the canvas with no fill
 	//     text: Specifies the text that will be written on the canvas
@@ -586,7 +587,7 @@ type IDraw interface {
 	//     x: coordenada x do texto a ser escrito (relativo ao elemento canvas)
 	//     y: coordenada x do texto a ser escrito (relativo ao elemento canvas)
 	//     maxWidth: [Opcional] Comprimento máximo do texto em pixels
-	StrokeText(text string, x, y int, maxWidth ...int)
+	StrokeText(text string, x, y commonTypes.Number, maxWidth ...commonTypes.Number)
 
 	// en: Sets the current font properties for text content
 	//
@@ -606,12 +607,12 @@ type IDraw interface {
 	ResetLineWidth()
 	SetMouseCursor(cursor mouse.CursorType)
 	AddEventListener(eventType interface{}, mouseMoveEvt interface{})
-	SetPixel(x, y int, pixel interface{})
+	SetPixel(x, y commonTypes.Number, pixel interface{})
 	MakePixel(pixelColor color.RGBA) interface{}
 	CreateImageData(width, height interface{}, pixelColor color.RGBA) interface{}
 
 	//todo: documentation
-	NewCanvasWith2DContext(document interface{}, id string, width, height int) canvas.Canvas
+	NewCanvasWith2DContext(document interface{}, id string, width, height commonTypes.Number) canvas.Canvas
 	GetContext() interface{}
 
 	// en: Saves the state of the current context
