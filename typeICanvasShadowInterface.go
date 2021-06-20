@@ -7,6 +7,7 @@ import (
 
 type ICanvasShadow interface {
 
+	// SetShadowBlur
 	// en: Sets the blur level for shadows
 	//     Default value: 0
 	//
@@ -14,6 +15,7 @@ type ICanvasShadow interface {
 	//     Valor padrão: 0
 	SetShadowBlur(value interface{})
 
+	// SetShadowColor
 	// en: Sets the color to use for shadows
 	//     Note: Use the shadowColor property together with the shadowBlur property to
 	//     create a shadow.
@@ -29,6 +31,7 @@ type ICanvasShadow interface {
 	//     Valor padrão: #000000
 	SetShadowColor(value color.RGBA)
 
+	// ShadowOffsetX
 	// en: Sets the horizontal distance of the shadow from the shape
 	//     shadowOffsetX = 0 indicates that the shadow is right behind the shape.
 	//     shadowOffsetX = 20 indicates that the shadow starts 20 pixels to the right
@@ -50,6 +53,7 @@ type ICanvasShadow interface {
 	//     Valor padrão: 0
 	ShadowOffsetX(value commonTypes.Number)
 
+	// ShadowOffsetY
 	// en: Sets or returns the vertical distance of the shadow from the shape
 	//     The shadowOffsetY property sets or returns the vertical distance of the
 	//     shadow from the shape.

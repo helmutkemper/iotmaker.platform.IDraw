@@ -5,6 +5,7 @@ type IFilterGradientInterface interface {
 	SetP1(point interface{})
 	PrepareFilter(platform ICanvasGradient)
 
+	// Fill
 	// en: The fill() method fills the current drawing (path). The default color is
 	//     black.
 	//     Tip: Use the fillStyle property to fill with another color/gradient.
@@ -20,6 +21,7 @@ type IFilterGradientInterface interface {
 	//     (semelhante ao método closePath()) e só então irá pintar
 	Fill(gradient interface{})
 
+	// Stroke
 	// en: The stroke() method actually draws the path you have defined with all those
 	//     moveTo() and lineTo() methods. The default color is black.
 	//     Tip: Use the strokeStyle property to draw with another color/gradient.

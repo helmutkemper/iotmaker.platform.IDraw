@@ -7,6 +7,7 @@ import (
 
 type ICanvasGradient interface {
 
+	// AddColorStopPosition
 	// en: Specifies the colors and stop positions in a gradient object
 	//     gradient: A gradient object created by CreateLinearGradient() or
 	//    CreateRadialGradient() methods
@@ -32,6 +33,7 @@ type ICanvasGradient interface {
 	//     menos uma vez com uma cor para que o gradiente seja visível.
 	AddColorStopPosition(gradient interface{}, stop commonTypes.Number, color color.RGBA)
 
+	// CreateLinearGradient
 	// en: This method of the Canvas 2D API creates a gradient along the line
 	// connecting two given coordinates, starting at (x0, y0) point and ending at
 	// (x1, y1) point
@@ -66,8 +68,9 @@ type ICanvasGradient interface {
 	//     fillStyle()
 	//     Dica: Use o método addColorStopPosition() para especificar diferentes cores
 	//     para o gradiente e a posição de cada cor
-	CreateLinearGradient(x0, y0, x1, y1 interface{}) interface{}
+	CreateLinearGradient(x0, y0, x1, y1 commonTypes.Number) interface{}
 
+	// CreateRadialGradient
 	// en: Creates a radial gradient (to use on canvas content). The parameters
 	// represent two circles, one with its center at (x0, y0) and a radius of r0, and
 	// the other with its center at (x1, y1) with a radius of r1.
@@ -91,8 +94,9 @@ type ICanvasGradient interface {
 	//     y1: Coordenada y do circulo final do gradiente
 	//     r1: Raio do círculo final. Deve ser um valor positivo e finito.
 	//     (nota: o raio é um comprimento e não um ângulo)
-	CreateRadialGradient(x0, y0, r0, x1, y1, r1 interface{}) interface{}
+	CreateRadialGradient(x0, y0, r0, x1, y1, r1 commonTypes.Number) interface{}
 
+	// SetFillStyle
 	// en: Sets the color, gradient, or pattern used to fill the drawing
 	//     value: a valid JavaScript value or a color.RGBA{} struct
 	//     Default value:	#000000
@@ -102,6 +106,7 @@ type ICanvasGradient interface {
 	//     Valor padrão: #000000
 	SetFillStyle(value interface{})
 
+	// SetStrokeStyle
 	// en: Sets the color, gradient, or pattern used for strokes
 	//     value: a valid JavaScript value or a color.RGBA{} struct
 	//     Default value: #000000
@@ -111,6 +116,7 @@ type ICanvasGradient interface {
 	//     Valor padrão: #000000
 	SetStrokeStyle(value interface{})
 
+	// Fill
 	// en: The fill() method fills the current drawing (path). The default color is
 	// black.
 	//     Tip: Use the fillStyle property to fill with another color/gradient.
@@ -126,6 +132,7 @@ type ICanvasGradient interface {
 	//     irá pintar
 	Fill()
 
+	// Stroke
 	// en: The stroke() method actually draws the path you have defined with all those
 	// moveTo() and lineTo() methods. The default color is black.
 	//     Tip: Use the strokeStyle property to draw with another color/gradient.
