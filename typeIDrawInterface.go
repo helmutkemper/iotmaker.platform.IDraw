@@ -640,7 +640,7 @@ type IDraw interface {
 	CreateImageData(width, height interface{}, pixelColor color.RGBA) interface{}
 
 	//todo: documentation
-	NewCanvasWith2DContext(document interface{}, id string, width, height int) canvas.Canvas
+	NewCanvasWith2DContext(document interface{}, id string, width, height int) (canvas *canvas.Canvas)
 	GetContext() interface{}
 
 	// Save
