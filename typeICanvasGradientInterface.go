@@ -1,9 +1,6 @@
 package iotmaker_platform_IDraw
 
-import (
-	commonTypes "github.com/helmutkemper/iotmaker.santa_isabel_theater.commonTypes"
-	"image/color"
-)
+import "image/color"
 
 type ICanvasGradient interface {
 
@@ -31,7 +28,7 @@ type ICanvasGradient interface {
 	//     adicionar várias cores ao gradiente, porém, se você omitir o método, o
 	//     gradiente não será visivel. Você tem a obrigação de chamar o método pelo
 	//     menos uma vez com uma cor para que o gradiente seja visível.
-	AddColorStopPosition(gradient interface{}, stop commonTypes.Number, color color.RGBA)
+	AddColorStopPosition(gradient interface{}, stop float64, color color.RGBA)
 
 	// CreateLinearGradient
 	// en: This method of the Canvas 2D API creates a gradient along the line
@@ -68,7 +65,7 @@ type ICanvasGradient interface {
 	//     fillStyle()
 	//     Dica: Use o método addColorStopPosition() para especificar diferentes cores
 	//     para o gradiente e a posição de cada cor
-	CreateLinearGradient(x0, y0, x1, y1 commonTypes.Number) interface{}
+	CreateLinearGradient(x0, y0, x1, y1 interface{}) interface{}
 
 	// CreateRadialGradient
 	// en: Creates a radial gradient (to use on canvas content). The parameters
@@ -94,7 +91,7 @@ type ICanvasGradient interface {
 	//     y1: Coordenada y do circulo final do gradiente
 	//     r1: Raio do círculo final. Deve ser um valor positivo e finito.
 	//     (nota: o raio é um comprimento e não um ângulo)
-	CreateRadialGradient(x0, y0, r0, x1, y1, r1 commonTypes.Number) interface{}
+	CreateRadialGradient(x0, y0, r0, x1, y1, r1 interface{}) interface{}
 
 	// SetFillStyle
 	// en: Sets the color, gradient, or pattern used to fill the drawing

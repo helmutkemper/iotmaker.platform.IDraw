@@ -1,7 +1,6 @@
 package iotmaker_platform_IDraw
 
 import (
-	commonTypes "github.com/helmutkemper/iotmaker.santa_isabel_theater.commonTypes"
 	iotmakerPlatformTextMetrics "github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.textMetrics"
 	"github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.webbrowser/canvas"
 	"github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.webbrowser/font"
@@ -43,7 +42,7 @@ type IDraw interface {
 	//     X: Coordenada x para onde o ponto vai ser deslocado
 	//     Y: Coordenada y para onde o ponto vai ser deslocado
 	//     Dica: Use o método stroke() para desenhar a rota no elemento canvas
-	MoveTo(x, y commonTypes.Number)
+	MoveTo(x, y interface{})
 
 	// ArcTo
 	// en: Creates an arc/curve between two tangents
@@ -68,7 +67,7 @@ type IDraw interface {
 	//     ctx.arcTo(150, 20, 150, 70, 50); // Create an arc
 	//     ctx.lineTo(150, 120);            // Continue with vertical line
 	//     ctx.stroke();                    // Draw it
-	ArcTo(x, y, radius, startAngle, endAngle commonTypes.Number)
+	ArcTo(x, y, radius, startAngle, endAngle interface{})
 
 	// LineTo
 	// en: Adds a new point and creates a line from that point to the last specified
@@ -82,7 +81,7 @@ type IDraw interface {
 	//     x: coordenada x para a criação da linha
 	//     y: coordenada y para a criação da linha
 	//     Dica: Use o método stroke() para desenhar a rota no elemento canvas
-	LineTo(x, y commonTypes.Number)
+	LineTo(x, y interface{})
 
 	// ClosePath
 	// en: Creates a path from the current point back to the starting point
@@ -95,7 +94,7 @@ type IDraw interface {
 	//     Dica: Use o método fill() para preencher o desenho (petro é a cor padrão).
 	//           Use a propriedade fillStyle para mudar a cor de preenchimento ou
 	//           adicionar um gradiente
-	ClosePath(x, y commonTypes.Number)
+	ClosePath(x, y interface{})
 
 	// Stroke
 	// en: The stroke() method actually draws the path you have defined with all those
@@ -122,7 +121,7 @@ type IDraw interface {
 	//     var ctx = c.getContext("2d");
 	//     ctx.lineWidth = 10;
 	//     ctx.strokeRect(20, 20, 80, 100);
-	SetLineWidth(value commonTypes.Number)
+	SetLineWidth(value interface{})
 
 	// GetLineWidth
 	// en: Return the current line width in pixels
@@ -139,7 +138,7 @@ type IDraw interface {
 	//     ctx.lineWidth = 10;
 	//     ctx.strokeRect(20, 20, 80, 100);
 	//     var l = ctx.lineWidth;
-	GetLineWidth() commonTypes.Number
+	GetLineWidth() int
 
 	// SetShadowBlur
 	// en: Sets the blur level for shadows
@@ -147,7 +146,7 @@ type IDraw interface {
 	//
 	// pt_br: Define o valor de borrão da sombra
 	//     Valor padrão: 0
-	SetShadowBlur(value commonTypes.Number)
+	SetShadowBlur(value interface{})
 
 	// GetShadowBlur
 	// en: Return the blur level for shadows
@@ -155,7 +154,7 @@ type IDraw interface {
 	//
 	// pt_br: Retorna o valor de borrão da sombra
 	//     Valor padrão: 0
-	GetShadowBlur() commonTypes.Number
+	GetShadowBlur() int
 
 	// SetShadowColor
 	// en: Sets the color to use for shadows
@@ -193,7 +192,7 @@ type IDraw interface {
 	//     afastadas a esquerda (em relação a parte mais a esquerda da forma)
 	//     Dica: Para ajustar a distância vertical, use a propriedade shadowOffsetY
 	//     Valor padrão: 0
-	ShadowOffsetX(value commonTypes.Number)
+	ShadowOffsetX(value int)
 
 	// ShadowOffsetY
 	// en: Sets or returns the vertical distance of the shadow from the shape
@@ -217,7 +216,7 @@ type IDraw interface {
 	//     afastadas para cima (em relação a parte mais elevada da forma)
 	//     Dica: Para ajustar a distância horizontal, use a propriedade shadowOffsetX
 	//     Valor padrão: 0
-	ShadowOffsetY(value commonTypes.Number)
+	ShadowOffsetY(value int)
 
 	//AddColorStopPosition
 	// en: Specifies the colors and stop positions in a gradient object
@@ -243,7 +242,7 @@ type IDraw interface {
 	//     adicionar várias cores ao gradiente, porém, se você omitir o método, o
 	//     gradiente não será visivel. Você tem a obrigação de chamar o método pelo
 	//     menos uma vez com uma cor para que o gradiente seja visível.
-	AddColorStopPosition(gradient interface{}, stop commonTypes.Number, color color.RGBA)
+	AddColorStopPosition(gradient interface{}, stop float64, color color.RGBA)
 
 	// Fill
 	// en: The fill() method fills the current drawing (path). The default color is
@@ -296,7 +295,7 @@ type IDraw interface {
 	//     fillStyle()
 	//     Dica: Use o método addColorStopPosition() para especificar diferentes cores
 	//     para o gradiente e a posição de cada cor
-	CreateLinearGradient(x0, y0, x1, y1 commonTypes.Number) interface{}
+	CreateLinearGradient(x0, y0, x1, y1 interface{}) interface{}
 
 	// CreateRadialGradient
 	// en: Creates a radial gradient (to use on canvas content). The parameters
@@ -322,7 +321,7 @@ type IDraw interface {
 	//     y1: Coordenada y do circulo final do gradiente
 	//     r1: Raio do círculo final. Deve ser um valor positivo e finito. (nota: o
 	//     raio é um comprimento e não um ângulo)
-	CreateRadialGradient(x0, y0, r0, x1, y1, r1 commonTypes.Number) interface{}
+	CreateRadialGradient(x0, y0, r0, x1, y1, r1 interface{}) interface{}
 
 	// SetFillStyle
 	// en: Sets the color, gradient, or pattern used to fill the drawing
@@ -400,8 +399,8 @@ type IDraw interface {
 	PutImageData(imgData interface{}, values ...int)
 
 	// todo: documentation
-	GetImageDataAlphaChannelByCoordinate(data interface{}, x, y, width commonTypes.Number) uint8
-	GetImageDataPixelByCoordinate(data interface{}, x, y, width commonTypes.Number) color.RGBA
+	GetImageDataAlphaChannelByCoordinate(data interface{}, x, y, width int) uint8
+	GetImageDataPixelByCoordinate(data interface{}, x, y, width int) color.RGBA
 
 	//(x, y, width, height int) map[int]map[int]color.RGBA
 
@@ -450,7 +449,7 @@ type IDraw interface {
 	//
 	//     Dica: Depois de manipular as informações de cor/alpha contidas no map[x][y],
 	//     elas podem ser colocadas de volta no canvas com o método putImageData().
-	GetImageDataAlphaChannelOnly(x, y, width, height commonTypes.Number) map[int]map[int]uint8
+	GetImageDataAlphaChannelOnly(x, y, width, height int) map[int]map[int]uint8
 
 	// GetImageDataCollisionByAlphaChannelValue
 	// en: Returns an ImageData map[x][y]bool that copies the pixel alpha channel for
@@ -497,7 +496,7 @@ type IDraw interface {
 	//
 	//     Dica: Depois de manipular as informações de cor/alpha contidas no map[x][y],
 	//     elas podem ser colocadas de volta no canvas com o método putImageData().
-	GetImageDataCollisionByAlphaChannelValue(x, y, width, height commonTypes.Number, minimumAcceptableValue uint8) map[int]map[int]bool
+	GetImageDataCollisionByAlphaChannelValue(x, y, width, height int, minimumAcceptableValue uint8) map[int]map[int]bool
 
 	// ClearRect
 	// en: Clears the specified pixels within a given rectangle
@@ -512,7 +511,7 @@ type IDraw interface {
 	//     width: Comprimento do retângulo a ser limpo
 	//     height: Altura do retângulo a ser limpo
 	//
-	ClearRect(x, y, width, height commonTypes.Number)
+	ClearRect(x, y, width, height interface{})
 
 	// FillRect
 	// en: Draws a "filled" rectangle
@@ -532,7 +531,7 @@ type IDraw interface {
 	//
 	//     Dica: Use a propriedade fillStile() para determinar a cor, gradiente ou
 	//     padrão a ser usado no reenchimento.
-	FillRect(x, y, width, height commonTypes.Number)
+	FillRect(x, y, width, height int)
 
 	// DrawImage
 	// en: Draws an image, canvas, or video onto the canvas
@@ -582,7 +581,7 @@ type IDraw interface {
 	DrawImage(image interface{}, value ...interface{})
 
 	// todo: descrição aqui
-	DrawImageMultiplesSprites(image interface{}, spriteWidth, spriteHeight, spriteFirstElementIndex, spriteLastElementIndex commonTypes.Number, spriteChangeInterval time.Duration, x, y, width, height, clearRectX, clearRectY, clearRectWidth, clearRectHeight, lifeCycleLimit, lifeCycleRepeatLimit commonTypes.Number, lifeCycleRepeatInterval time.Duration)
+	DrawImageMultiplesSprites(image interface{}, spriteWidth, spriteHeight, spriteFirstElementIndex, spriteLastElementIndex int, spriteChangeInterval time.Duration, x, y, width, height, clearRectX, clearRectY, clearRectWidth, clearRectHeight, lifeCycleLimit, lifeCycleRepeatLimit int, lifeCycleRepeatInterval time.Duration)
 
 	// FillText
 	// en: Draws "filled" text on the canvas
@@ -598,7 +597,7 @@ type IDraw interface {
 	//     x: coordenada x do texto a ser escrito (relativo ao elemento canvas)
 	//     y: coordenada x do texto a ser escrito (relativo ao elemento canvas)
 	//     maxWidth: [Opcional] Comprimento máximo do texto em pixels
-	FillText(text string, x, y commonTypes.Number, maxWidth ...commonTypes.Number)
+	FillText(text string, x, y int, maxWidth ...int)
 
 	// StrokeText
 	// en: Draws text on the canvas with no fill
@@ -614,7 +613,7 @@ type IDraw interface {
 	//     x: coordenada x do texto a ser escrito (relativo ao elemento canvas)
 	//     y: coordenada x do texto a ser escrito (relativo ao elemento canvas)
 	//     maxWidth: [Opcional] Comprimento máximo do texto em pixels
-	StrokeText(text string, x, y commonTypes.Number, maxWidth ...commonTypes.Number)
+	StrokeText(text string, x, y int, maxWidth ...int)
 
 	// Font
 	// en: Sets the current font properties for text content
@@ -636,12 +635,12 @@ type IDraw interface {
 	ResetLineWidth()
 	SetMouseCursor(cursor mouse.CursorType)
 	AddEventListener(eventType interface{}, mouseMoveEvt interface{})
-	SetPixel(x, y commonTypes.Number, pixel interface{})
+	SetPixel(x, y int, pixel interface{})
 	MakePixel(pixelColor color.RGBA) interface{}
 	CreateImageData(width, height interface{}, pixelColor color.RGBA) interface{}
 
 	//todo: documentation
-	NewCanvasWith2DContext(document interface{}, id string, width, height commonTypes.Number) canvas.Canvas
+	NewCanvasWith2DContext(document interface{}, id string, width, height int) canvas.Canvas
 	GetContext() interface{}
 
 	// Save
