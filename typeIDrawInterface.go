@@ -2,9 +2,9 @@ package iotmaker_platform_IDraw
 
 import (
 	iotmakerPlatformTextMetrics "github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.textMetrics"
-	"github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.webbrowser/canvas"
+	"github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.webbrowser/browserMouse"
 	"github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.webbrowser/font"
-	"github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.webbrowser/mouse"
+	"github.com/helmutkemper/iotmaker.santa_isabel_theater.platform.webbrowser/javascript/canvas"
 	"image/color"
 	"time"
 )
@@ -393,10 +393,98 @@ type IDraw interface {
 	//
 	//     Dica: Depois de manipular as informações de cor/alpha contidas no map[x][y],
 	//     elas podem ser colocadas de volta no canvas com o método putImageData().
-	//GetImageData(x, y, width, height int, separeData bool) interface{}
+	GetImageData(x, y, width, height int) map[int]map[int]color.RGBA
+
+	// GetImageDataJsValue
+	//
+	// English:
+	//
+	//  Returns an ImageData js.Value that copies the pixel data for the specified rectangle on a canvas
+	//
+	//   Input:
+	//     x: The x coordinate (in pixels) of the upper-left corner to start copy from
+	//     y: The y coordinate (in pixels) of the upper-left corner to start copy from
+	//     width: The width of the rectangular area you will copy
+	//     height: The height of the rectangular area you will copy
+	//
+	//   Output:
+	//     data: js.Value
+	//
+	//   Note:
+	//     * return x and y are NOT relative to the coordinate (0,0) on the image, are relative to the
+	//       coordinate (0,0) on the canvas;
+	//     * The ImageData object is not a picture, it specifies a part (rectangle) on the canvas, and
+	//       holds information of every pixel inside that rectangle.
+	//
+	// For every pixel in the map[x][y] there are four pieces of information, the color.RGBA values:
+	//   R - The color red (from 0-255)
+	//   G - The color green (from 0-255)
+	//   B - The color blue (from 0-255)
+	//   A - The alpha channel (from 0-255; 0 is transparent and 255 is fully visible)
+	//
+	//   Tip:
+	//   * After you have manipulated the color/alpha information in the map[x][y], you can copy the image
+	//     data back onto the canvas with the putImageData() method.
+	//
+	// pr_br: Retorna um js.Value com parte dos dados da imagem contida no retângulo especificado.
+	//
+	//   Entrada:
+	//     x: Coordenada x (em pixels) do canto superior esquerdo de onde os dados vão ser copiados;
+	//     y: Coordenada y (em pixels) do canto superior esquerdo de onde os dados vão ser copiados;
+	//     width: comprimento do retângulo a ser copiado;
+	//     height: altura do retângulo a ser copiado;
+	//
+	//   Saída:
+	//     data: js.Value
+	//
+	//   Nota:
+	//     * x e y do retorno não são relativos a coordenada (0,0) da imagem, são relativos a coordenada
+	//       (0,0) do canvas;
+	//     * Os dados da imagem não são uma figura, eles representam uma parte retangular do canvas e
+	//       guardam informações de cada pixel contido nessa área.
+	//
+	// Para cada pixel contido no mapa há quatro peças de informação com valores no formato de color.RGBA:
+	//   R - Cor vermelha (de 0-255)
+	//   G - Cor verde (de 0-255)
+	//   B - Cor azul (de 0-255)
+	//   A - Canal alpha (de 0-255; onde, 0 é transparente e 255 é totalmente visível)
+	//
+	//   Dica:
+	//     * Depois de manipular as informações de cor/alpha contidas no map[x][y], elas podem ser
+	//       colocadas de volta no canvas com o método putImageData().
+	GetImageDataJsValue(x, y, width, height int) (data interface{})
 
 	// todo: documentation
 	PutImageData(imgData interface{}, values ...int)
+
+	// PutImageDataJsValue
+	//
+	// English:
+	//
+	//  PutImageDataJsValue() method puts the image data (from a specified ImageData object) back onto the
+	//  canvas.
+	//
+	//   Input:
+	//     imgData:     specifies the ImageData object to put back onto the canvas;
+	//     x:           the x-coordinate, in pixels, of the upper-left corner of where to place the image
+	//                  on the canvas;
+	//     y:           the y-coordinate, in pixels, of the upper-left corner of where to place the image
+	//                  on the canvas;
+	//     dirtyX:      optional. The x-coordinate, in pixels, of the upper-left corner of where to start
+	//                  drawing the image. Default 0;
+	//     dirtyY:      optional. The y-coordinate, in pixels, of the upper-left corner of where to start
+	//                  drawing the image. Default 0;
+	//     dirtyWidth:  optional. The width to use when drawing the image on the canvas;
+	//     Default:     the width of the extracted image;
+	//     dirtyHeight: optional. The height to use when drawing the image on the canvas;
+	//     Default:     the height of the extracted image.
+	//
+	//   Tip:
+	//     * Read about the getImageDataJsValue() method that copies the pixel data for a specified
+	//       rectangle on a canvas;
+	//     * Read about the createImageJsValue() method that creates a new, blank ImageData object.
+	// todo: português
+	PutImageDataJsValue(data interface{}, values ...int)
 
 	// todo: documentation
 	GetImageDataAlphaChannelByCoordinate(data interface{}, x, y, width int) uint8
@@ -633,7 +721,7 @@ type IDraw interface {
 	ResetStrokeStyle()
 	ResetShadow()
 	ResetLineWidth()
-	SetMouseCursor(cursor mouse.CursorType)
+	SetMouseCursor(cursor browserMouse.CursorType)
 	AddEventListener(eventType interface{}, mouseMoveEvt interface{})
 	SetPixel(x, y int, pixel interface{})
 	MakePixel(pixelColor color.RGBA) interface{}
